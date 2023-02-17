@@ -15,7 +15,11 @@ satisfaction_scale = [
 ]
 energy_scale = ["VERY LOW", "LOW", "MODERATE", "HIGH", "VERY HIGH"]
 session_task_split = ["Single Task", "Multi-Task"]
-task_completion = ["Main Task Completed", "Multi-Task Contribution"]
+task_completion = [
+    "Main Task Completed",
+    "Main Task Contribution",
+    "Multi-Task Contribution",
+]
 
 # text box input user prompt
 text_field_prompt = """
