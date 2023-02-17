@@ -6,6 +6,7 @@ from csv import writer
 from datetime import datetime
 import os
 import sys
+import pytz
 
 data_path = os.path.join(os.path.dirname(sys.executable), "data.csv")
 
@@ -160,7 +161,9 @@ def on_submit():
         tk.messagebox.showwarning(title="WARNING", message="Submission incomplete")
     else:
         likert_responses.append(text_response)
-        likert_responses.append(datetime.now())
+        # create a datetime object for the current time in UTC
+        utc_now = datetime.now(tz=pytz.UTC)
+        likert_responses.append(utc_now)
         save_data(likert_responses, data_path)
         show_message()
 
@@ -185,7 +188,7 @@ screen_height = root.winfo_screenheight()
 x_pos = 700  # (screen_width // 2) - (600 // 2) for centered
 y_pos = (screen_height // 2) - (600 // 2)
 # Set the position of the window to the calculated x and y coordinates
-window_width = 510
+window_width = 515
 root.geometry(f"{window_width}x700+{x_pos}+{y_pos}")
 # Body
 root.title("Work Time Management")
