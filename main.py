@@ -4,6 +4,10 @@ from tkinter import scrolledtext, messagebox, font, ttk
 from ttkthemes import ThemedTk
 from csv import writer
 from datetime import datetime
+import os
+import sys
+
+data_path = os.path.join(os.path.dirname(sys.executable), "data.csv")
 
 # Likert Scales
 satisfaction_scale = [
@@ -159,7 +163,7 @@ def on_submit():
     else:
         likert_responses.append(text_response)
         likert_responses.append(datetime.now())
-        save_data(likert_responses, "data.csv")
+        save_data(likert_responses, data_path)
         show_message()
 
 
@@ -180,7 +184,7 @@ root.configure(background="#F0F0F8")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
 # Calculate the x and y coordinates for the Tkinter window to appear at the center of the screen
-x_pos = 1100  # (screen_width // 2) - (600 // 2) for centered
+x_pos = 700  # (screen_width // 2) - (600 // 2) for centered
 y_pos = (screen_height // 2) - (600 // 2)
 # Set the position of the window to the calculated x and y coordinates
 window_width = 500
