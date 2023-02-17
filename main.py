@@ -18,10 +18,10 @@ satisfaction_scale = [
     "VERY DISSATISFIED",
 ]
 energy_scale = ["VERY LOW", "LOW", "MODERATE", "HIGH", "VERY HIGH"]
-session_task_split = ["Single Task", "Multi-Task"]
 task_completion = [
-    "Main Task Completed",
+    "Main Task Completion",
     "Main Task Contribution",
+    "Multi-Task Completion",
     "Multi-Task Contribution",
 ]
 
@@ -36,13 +36,11 @@ label_ScaleWidgets = [
     "Energy Levels",
     "Focus",
     "Session Type",
-    "Task Completion",
 ]
 likert_widgets = [
     satisfaction_scale,
     energy_scale,
     energy_scale,
-    session_task_split,
     task_completion,
 ]
 assert len(label_ScaleWidgets) == len(likert_widgets)
@@ -187,15 +185,15 @@ screen_height = root.winfo_screenheight()
 x_pos = 700  # (screen_width // 2) - (600 // 2) for centered
 y_pos = (screen_height // 2) - (600 // 2)
 # Set the position of the window to the calculated x and y coordinates
-window_width = 500
+window_width = 510
 root.geometry(f"{window_width}x700+{x_pos}+{y_pos}")
 # Body
 root.title("Work Time Management")
 continue_pos, option_menu_values = likert_measures(
     likert_widgets, label_ScaleWidgets, root
 )
-label_widget(text_field_prompt, root).place(relx=0.035, y=continue_pos)
-text_input = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=65, height=25)
+label_widget(text_field_prompt, root).place(relx=0.05, y=continue_pos)
+text_input = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=69, height=25)
 continue_pos += 100
 text_input.place(y=continue_pos, relx=0.01)
 submit_button = ttk.Button(root, text="Submit", command=on_submit)
